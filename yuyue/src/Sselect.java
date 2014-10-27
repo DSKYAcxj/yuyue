@@ -52,30 +52,76 @@ public class Sselect extends HttpServlet {
         serial [7] = "15:30-16:00";
         serial [8] = "16:00-16:30";
         serial [9] = "16:30-17:00";
-        int j;
+        String date [] = new String [7];
+        date [0] = "Monday";
+        date [1] = "Tuesday";
+        date [2] = "Wednesday";
+        date [3] = "Thursday";
+        date [4] = "Friday";
+        date [5] = "Saturday";
+        date [6] = "Sunday";
+        int j =0,di;
+        boolean ftg;
         String tmp = "";
-		if(T_c != null)
+        System.out.println("Start!");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        if(T_c != null)
 		{
+        	tmp = "";
+			System.out.println(tslt.length);
 			for (int i = 0; i< tslt.length; i++)
 			{
-				for ( j = 0; j< 10; j++)
+				System.out.println(tslt[i]);
+				ftg = false;
+				for ( di = 0; di< 7; di++)
 				{
-					  if(tslt[i].equals(serial[j]) == true)break;
+				 for ( j = 0; j< 10; j++)
+				 {
+			 		  if(tslt[i].equals(date[di]+serial[j]) == true)
+			 			  
+			 		  {
+			 			  
+			 			  ftg = true;
+			 			  break;
+			 			  
+			 			  
+			 		  }		  
+		 		}
+				 
+				 if( ftg == true)
+				 {
+					 break;
+				 }
 				}
-				beiyuyue += String.valueOf( j);
-				yuyue += String.valueOf( j);
+				System.out.println("di="+di+"j"+j);
+				System.out.println("bei"+beiyuyue);
+				beiyuyue += String.valueOf( di)+ String.valueOf( j);
+				System.out.println("bei"+beiyuyue);
+				System.out.println("yu"+yuyue);
+				yuyue +=    String.valueOf( di)+ String.valueOf( j);
+				System.out.println("yu"+yuyue);
 				System.out.println("ceshi:i="+i+" j="+j);
 			}
 			
-			for(int i =0 ;i< lenth1; i++)
+			
+			System.out.println("tmp = "+tmp);
+			System.out.println("fabu = "+fabu);
+			for(int i = 1 ;i< lenth1; i += 2)
 			{
 				 flg =true;
-				 for( j =0; j < beiyuyue.length(); j++)
+				 for( j =1; j < beiyuyue.length(); j += 2)
 				 {
-					  if(fabu.charAt(i) == beiyuyue.charAt(j))flg = false;
+					  if((fabu.charAt(i) == beiyuyue.charAt(j)) && (fabu.charAt(i - 1) == beiyuyue.charAt(j - 1)))
+						  {flg = false;break;}
 				 }
 				 if (flg == true)
-					   tmp += fabu.charAt(i);
+				 {
+					   System.out.println("i = "+i);
+					   System.out.println("charAt(i - 1) = "+fabu.charAt(i - 1));
+					   tmp += String.valueOf(fabu.charAt(i - 1)) + String.valueOf(fabu.charAt(i));
+					   System.out.println("tmp = "+tmp);
+				 }
+				 System.out.println("flg = "+flg);
 			}
 			System.out.println("tmp = "+tmp);
 			tch.setFabu(tmp);

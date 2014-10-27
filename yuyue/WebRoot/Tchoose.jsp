@@ -48,6 +48,15 @@ System.out.println("ok1");
           serial [7] = "15:30-16:00";
           serial [8] = "16:00-16:30";
           serial [9] = "16:30-17:00";
+          String date [] = new String [7];
+          date [0] = "Monday";
+          date [1] = "Tuesday";
+          date [2] = "Wednesday";
+          date [3] = "Thursday";
+          date [4] = "Friday";
+          date [5] = "Saturday";
+          date [6] = "Sunday";
+          int di;
       %>
      <table width="845" cellspacing="0" align="center">
 
@@ -61,26 +70,35 @@ System.out.println("ok1");
 		</table>
     	<form action="Tselect" method="post">
 		<table width="500" align="center" cellspacing="0">
-			<tr>
+			
 			<%
+			    for(di = 0; di < 7 ; di++)
+			    {
+			    %>
+			    
+	               <tr>
+	               <td><%=date[di] %></td>
+	            <% 
 			       for(i = 0; i < 10; i++)
 			       {
 			            System.out.println(i);
 			            flg = false;
-			            for(int j = 0;j < lenth1; j++)if((int)(fabu.charAt(j)-'0') == i)flg = true;
-			            for(int j = 0;j < lenth2; j++)if((int)(beiyuyue.charAt(j)-'0') == i)flg = true;
+			            for(int j = 1;j < lenth1; j += 2)if((int)(fabu.charAt(j) - '0') == i && (int)(fabu.charAt(j - 1) - '0') == di)flg = true;
+			            for(int j = 1;j < lenth2; j += 2)if((int)(beiyuyue.charAt(j) - '0') == i && (int)(beiyuyue.charAt(j - 1) - '0') == di)flg = true;
 	                    System.out.println(flg);
 	                    if(flg == false)
 	                    {
 	                    %>
-	                    <td><input type="checkbox" name="T_chse" value= "<%=serial[i]%>"></td>					    
+	                    <td><input type="checkbox" name="T_chse" value= "<%=date[di]+serial[i]%>"></td>					    
 	                    <td><%=serial[i]%></td>	
 	                    <%
 	                    }
 	                   		       
 			       }
-			 %>
-			 <%
+			       %>
+			       </tr>
+			       <%
+}
                session.setAttribute("nowtch",tch); 
 %> 
 			<tr>

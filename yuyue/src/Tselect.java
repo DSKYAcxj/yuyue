@@ -49,7 +49,16 @@ public class Tselect extends HttpServlet {
         serial [7] = "15:30-16:00";
         serial [8] = "16:00-16:30";
         serial [9] = "16:30-17:00";
-        int j;
+        String date [] = new String [7];
+        date [0] = "Monday";
+        date [1] = "Tuesday";
+        date [2] = "Wednesday";
+        date [3] = "Thursday";
+        date [4] = "Friday";
+        date [5] = "Saturday";
+        date [6] = "Sunday";
+        int j = 0,di;
+        boolean flg;
         System.out.println("ok4");
 		if(T_c != null)
 		{
@@ -57,11 +66,33 @@ public class Tselect extends HttpServlet {
 			System.out.println(tslt.length);
 			for (int i = 0; i< tslt.length; i++)
 			{
+				flg = false;
+				System.out.println(flg);
+				System.out.println(tslt[i]);
+				for( di = 0 ; di< 7; di++)
+				{
 				for ( j = 0; j< 10; j++)
 				{
-					  if(tslt[i].equals(serial[j]) == true)break;
+					  if(tslt[i].equals(date[di]+serial[j]) == true)
+						  {
+						  System.out.println(date[di]+serial[j]);
+						  flg = true;
+						  break;
+						  }
+					  
 				}
-				fabu += String.valueOf( j);
+				if(flg == true){break;}
+				System.out.println(flg);
+				}
+				
+				System.out.println(flg);
+				System.out.println(fabu);
+				System.out.println("di="+di);
+				System.out.println("j="+j);
+				if(flg == true)
+					{
+					fabu += String.valueOf( di) + String.valueOf( j);
+					}
 				
 			}
 			tch.setFabu(fabu);
