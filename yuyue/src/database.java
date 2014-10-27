@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+//import java.util.ArrayList;
 //import java.util.List;
 
 
@@ -13,7 +13,7 @@ import bean.teacher;
 public class database {
 	private static Connection con; 
 	private static PreparedStatement stmt;
-	private static ResultSet rs;
+	//private static ResultSet rs;
 	
 	/*public static ArrayList<teacher> showAllInfo(String name){
 		

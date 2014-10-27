@@ -13,6 +13,14 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/login</url-pattern>
 </servlet-mapping>
+<servlet>
+        <servlet-name>Tdelete</servlet-name>
+        <servlet-class>Tdelete</servlet-class>
+	</servlet>
+	<servlet-mapping>
+        <servlet-name>Tdelete</servlet-name>
+        <url-pattern>/Tdelete</url-pattern>
+</servlet-mapping>
   <servlet>
         <servlet-name>require</servlet-name>
         <servlet-class>require</servlet-class>

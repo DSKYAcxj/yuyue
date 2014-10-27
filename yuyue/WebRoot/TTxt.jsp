@@ -459,11 +459,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </table>
     <% 
     session.setAttribute("nowtch",tch);
-    String url =response.encodeURL("Tchoose.jsp");
+    String url1 =response.encodeURL("Tchoose.jsp");
+    String url2 =response.encodeURL("Tdelete.jsp");
 %>
 
 
  	<p><a href="index.jsp">返回首页</a>
- 	<a href='<%=url%>'>进入发布界面</a></p>
+ 	<a href='<%=url1%>'>进入发布界面</a>
+ 	<a href='<%=url2%>'>进入修改界面</a></p>
   </body>
 </html>
