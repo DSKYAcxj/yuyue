@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.util.mail.*;
+
 import db.database;
 import bean.event;
 import bean.student;
@@ -81,6 +83,21 @@ public class s_deal extends HttpServlet {
 				et.setid(nt_name + " "+ndate + " " + ntime);
 				et.sets_name(null);
 				et.setbeizhu(null);
+				teacher tch = database.queryt_name(nt_name);
+				MailSenderInfo mailInfo = new MailSenderInfo();   
+			      mailInfo.setMailServerHost("smtp.163.com");   
+			      mailInfo.setMailServerPort("25");   
+			      mailInfo.setValidate(true);   
+			      mailInfo.setUserName("15104684631@163.com");   
+			      mailInfo.setPassword("671023");//您的邮箱密码   
+			      mailInfo.setFromAddress("15104684631@163.com");   
+			      mailInfo.setToAddress(tch.getmail());   
+			      mailInfo.setSubject("您的预约被取消了");   
+			      mailInfo.setContent("周"+ndate+"的"+ntime);   
+			         //这个类主要来发送邮件  
+			      SimpleMailSender sms = new SimpleMailSender();  
+			      sms.sendTextMail(mailInfo);//发送文体格式   
+			      sms.sendHtmlMail(mailInfo);//发送html格式  
 				database.addevent(et);	
 				database.deleteevent(detail[i]);	
 			}
@@ -112,6 +129,21 @@ public class s_deal extends HttpServlet {
 				et.setid(nt_name + " "+ s_name +" "+ndate + " " + ntime);
 				et.sets_name(s_name);
 				et.setbeizhu(beizhu);
+				teacher tch = database.queryt_name(nt_name);
+				MailSenderInfo mailInfo = new MailSenderInfo();   
+			      mailInfo.setMailServerHost("smtp.163.com");   
+			      mailInfo.setMailServerPort("25");   
+			      mailInfo.setValidate(true);   
+			      mailInfo.setUserName("15104684631@163.com");   
+			      mailInfo.setPassword("671023");//您的邮箱密码   
+			      mailInfo.setFromAddress("15104684631@163.com");   
+			      mailInfo.setToAddress(tch.getmail());   
+			      mailInfo.setSubject("您的时间被预约了");   
+			      mailInfo.setContent("周"+ndate+"的"+ntime);   
+			         //这个类主要来发送邮件  
+			      SimpleMailSender sms = new SimpleMailSender();  
+			      sms.sendTextMail(mailInfo);//发送文体格式   
+			      sms.sendHtmlMail(mailInfo);//发送html格式  
 				database.deleteevent(detail[i]);
 				database.addevent(et);
 			}

@@ -2,8 +2,8 @@ package bean;
 public class student {
 		private String name;
 		private String psword;
-		private String truename ;
-				
+		private String truename;
+		private String mail;		
 		
 		
 		public student(){
@@ -42,5 +42,12 @@ public class student {
 			return truename;
 		}
 
+		public void setmail(String mail) {
+			this.mail = mail;
+		}
+
+		public String getmail() {
+			return mail;
+		}
 
 }

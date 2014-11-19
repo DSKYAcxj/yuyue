@@ -3,7 +3,7 @@ public class teacher {
 		private String name;
 		private String psword;
 		private String truename;
-				
+		private String mail;		
 		
 		
 		public teacher(){
@@ -41,4 +41,11 @@ public class teacher {
 			return truename;
 		}
 
+		public void setmail(String mail) {
+			this.mail = mail;
+		}
+
+		public String getmail() {
+			return mail;
+		}
 }

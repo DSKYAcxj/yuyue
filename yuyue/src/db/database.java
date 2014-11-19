@@ -232,6 +232,7 @@ public static boolean addInfo_S(student tch){
  				tchname.setname(rs.getString("name"));
  				tchname.setpsword(rs.getString("psword"));
  				tchname.settruename(rs.getString("truename"));
+ 				tchname.setmail(rs.getString("mail"));
  			}
  		}catch(SQLException e){
  			tchname=null;
@@ -255,6 +256,7 @@ public static boolean addInfo_S(student tch){
 				tchname.setname(rs.getString("name"));
 				tchname.setpsword(rs.getString("psword"));
 				tchname.settruename(rs.getString("truename"));
+				tchname.setmail(rs.getString("mail"));
 			}
 		}catch(SQLException e){
 			tchname=null;
@@ -278,6 +280,7 @@ public static boolean addInfo_S(student tch){
 				stuname.setname(rs.getString("name"));
 				stuname.setpsword(rs.getString("psword"));
 				stuname.settruename(rs.getString("truename"));
+				stuname.setmail(rs.getString("mail"));
 			}
 		}catch(SQLException e){
 			stuname=null;
