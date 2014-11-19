@@ -14,36 +14,20 @@
         <url-pattern>/login</url-pattern>
 </servlet-mapping>
 <servlet>
-        <servlet-name>Tdelete</servlet-name>
-        <servlet-class>Tdelete</servlet-class>
+        <servlet-name>t_deal</servlet-name>
+        <servlet-class>t_deal</servlet-class>
 	</servlet>
 	<servlet-mapping>
-        <servlet-name>Tdelete</servlet-name>
-        <url-pattern>/Tdelete</url-pattern>
+        <servlet-name>t_deal</servlet-name>
+        <url-pattern>/t_deal</url-pattern>
 </servlet-mapping>
   <servlet>
-        <servlet-name>require</servlet-name>
-        <servlet-class>require</servlet-class>
+        <servlet-name>s_deal</servlet-name>
+        <servlet-class>s_deal</servlet-class>
 	</servlet>
 	<servlet-mapping>
-        <servlet-name>require</servlet-name>
-        <url-pattern>/require</url-pattern>
-</servlet-mapping>
-  <servlet>
-        <servlet-name>Sselect</servlet-name>
-        <servlet-class>Sselect</servlet-class>
-	</servlet>
-	<servlet-mapping>
-        <servlet-name>Sselect</servlet-name>
-        <url-pattern>/Sselect</url-pattern>
-</servlet-mapping>
-  <servlet>
-        <servlet-name>Tselect</servlet-name>
-        <servlet-class>Tselect</servlet-class>
-	</servlet>
-	<servlet-mapping>
-        <servlet-name>Tselect</servlet-name>
-        <url-pattern>/Tselect</url-pattern>
+        <servlet-name>s_deal</servlet-name>
+        <url-pattern>/s_deal</url-pattern>
 </servlet-mapping>
 	<filter>
 		<filter-name>struts2</filter-name>

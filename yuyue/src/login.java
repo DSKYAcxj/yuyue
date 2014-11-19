@@ -1,5 +1,5 @@
 import java.io.IOException;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 //import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import db.database;
+
+import bean.event;
 import bean.student;
 import bean.teacher;
 
@@ -33,7 +36,6 @@ public class login extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("1");
 		String url1 = "TTxt.jsp";
 		String url2 = "STxt.jsp";
 		String url = "index.jsp";
@@ -50,24 +52,29 @@ public class login extends HttpServlet {
 		String name = (String)request.getParameter("name").trim();
 		String psword = (String)request.getParameter("psword").trim();
 		
+		ArrayList<event> list=new ArrayList<event>();
+		
+		
 		if(iButton1 != null)
 		{
-			System.out.println("2");
-			System.out.println("select * from teacher where name= '"+name+"'");
-		    teacher tch=database.QueryName_T(name);
-		    String psd = tch.getPsword();
+		    teacher tch=database.queryt_name(name);
+		    String psd = tch.getpsword();
+		    System.out.println("1!!!");
 		    if(psword.equals(psd) == true)
 		    {
-		       System.out.println("3");
+		      list = database.showt_name(name);
 		      request.setAttribute("nowtch", tch);
-		      System.out.println("5");
+		      request.setAttribute("nowtch_name", tch.getname());
+		      request.setAttribute("list", list);
+		      System.out.println("2!!!");
+		      System.out.println("name =" + tch.getname());
 		      RequestDispatcher rd=request.getRequestDispatcher(url1);
-		      System.out.println("66");
 		      rd.forward(request, response);
+		      
 		    }
 		    else
 		    {
-		    	System.out.println("4");
+		    	System.out.println("3!!!");
 		    	RequestDispatcher rd=request.getRequestDispatcher(url);
 			    rd.forward(request, response);
 		    }
@@ -76,19 +83,19 @@ public class login extends HttpServlet {
 		
 		else if(iButton2 != null)
 		{
-			System.out.println("6");
-			student stu=database.QueryName_S(name);
-		    String psd = stu.getPsword();
+			student stu=database.querys_name(name);
+		    String psd = stu.getpsword();
 		    if(psword.equals(psd) == true)
 		    {
-		      System.out.println("7");
+		      list = database.shows_name(name);
 		      request.setAttribute("nowstu", stu);
+		      request.setAttribute("nowstu_name", stu.getname());
+		      request.setAttribute("list", list);
 		      RequestDispatcher rd=request.getRequestDispatcher(url2);
 		      rd.forward(request, response);
 		    }
 		    else
 		    {
-		    	System.out.println("8");
 		    	RequestDispatcher rd=request.getRequestDispatcher(url);
 			    rd.forward(request, response);
 		    }

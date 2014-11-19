@@ -2,44 +2,44 @@ package bean;
 public class student {
 		private String name;
 		private String psword;
-		private String yuyue ;
+		private String truename ;
 				
 		
 		
 		public student(){
 			this.name = null;
-			this.yuyue = null;
+			this.truename = null;
 			this.psword = null;
 		}
 		
 		public student(String name,String psword){
 			this.name=name;
 			this.psword=psword;
-			this.yuyue = null;
+			this.truename = null;
 		}
-		public void setName(String name) {
+		public void setname(String name) {
 			this.name = name;
 		}
 
-		public String getName() {
+		public String getname() {
 			return name;
 		}
 
-		public void setPsword(String psword) {
+		public void setpsword(String psword) {
 			this.psword = psword;
 		}
 
-		public String getPsword() {
+		public String getpsword() {
 			return psword;
 		}
 
 
-		public void setYuyue(String yuyue) {
-			this.yuyue = yuyue;
+		public void settruename(String yuyue) {
+			this.truename = yuyue;
 		}
 
-		public String getYuyue() {
-			return yuyue;
+		public String gettruename() {
+			return truename;
 		}
 
 

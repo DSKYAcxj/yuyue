@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,bean.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*,bean.*,db.*" pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 <%
 String path = request.getContextPath();
@@ -22,14 +22,207 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-           <%student stu =(student)session.getAttribute("nowstu"); %>
-           <form  name="form" method="post" action="require" style="height: 60px; width: 818px; "> 
-                              请输入老师的名字：
-      	<input type="text" name="R_name" style="width: 589px; ">
-      	<input type="submit"  value="确定" style="width: 65px; ">
-      	</form>
-      	<%
-      	    session.setAttribute("nowtch",stu);
-      	 %>
+  
+  <% 
+     teacher tch = (teacher)request.getAttribute("nowtch");
+     student stu = (student)request.getAttribute("nowstu");
+     String t_name = (String)request.getAttribute("nowtch_name");
+     String s_name = (String)request.getAttribute("nowstu_name");
+     System.out.println("预约界面!!!"+s_name);
+     System.out.println("预约界面!!!"+t_name);
+     ArrayList<event> list=new ArrayList<event>();
+     list = database.showt_name(t_name);
+     String et_date;
+     String et_time;
+    %>
+  <form  name="form" method="post" action="s_deal">
+    <table width="2000" border="1" align="center" height="">
+  <tr>
+     <td align="center" style="width: 40px; ">周一</td>
+      <%
+     Iterator<event> iter1=list.iterator(); 
+     while(iter1.hasNext()){
+    		event et=(event)iter1.next();
+    		et_date = et.getdate();
+    		et_time = et.gettime();
+    		if(Integer.parseInt(et_date) == 1)
+    		{
+    		
+    		   if(et.gets_name() == null)
+    		   {
+    		   %>
+    		   <td><input type="checkbox" name="list" value= "<%=et.getid()%>"><%=et_time%></td>					    
+    		   <%
+    		   }
+    		}
+    }
+    %>
+  </tr>
+  <tr>
+     <td align="center" style="width: 40px; ">周二</td>
+      <%
+     Iterator<event> iter2=list.iterator(); 
+     while(iter2.hasNext()){
+    		event et=(event)iter2.next();
+    		et_date = et.getdate();
+    		et_time = et.gettime();
+    		if(Integer.parseInt(et_date) == 2)
+    		{
+    		
+    		   if(et.gets_name() == null)
+    		   {
+    		   %>
+    		   <td><input type="checkbox" name="list" value= "<%=et.getid()%>"><%=et_time%></td>					    
+    		   <%
+    		   }
+    		}
+    	}
+    %>
+  </tr>
+ <tr>
+     <td align="center" style="width: 40px; ">周三</td>
+      <%
+     Iterator<event> iter3=list.iterator(); 
+     while(iter3.hasNext()){
+    		event et=(event)iter3.next();
+    		et_date = et.getdate();
+    		et_time = et.gettime();
+    		if(Integer.parseInt(et_date) == 3)
+    		{
+    		
+    		   if(et.gets_name() == null)
+    		   {
+    		   %>
+    		   <td><input type="checkbox" name="list" value= "<%=et.getid()%>"><%=et_time%></td>					    
+    		   <%
+    		   }
+    		   
+    		}
+    	}
+    %>
+  </tr>
+ <tr>
+     <td align="center" style="width: 40px; ">周四</td>
+      <%
+     Iterator<event> iter4=list.iterator(); 
+     while(iter4.hasNext()){
+    		event et=(event)iter4.next();
+    		et_date = et.getdate();
+    		et_time = et.gettime();
+    		if(Integer.parseInt(et_date) == 4)
+    		{
+    		
+    		   if(et.gets_name() == null)
+    		   {
+    		   %>
+    		   <td><input type="checkbox" name="list" value= "<%=et.getid()%>"><%=et_time%></td>					    
+    		   <%
+    		   }
+    		  
+    		}
+    	}
+    %>
+  </tr>
+  <tr>
+     <td align="center" style="width: 40px; ">周五</td>
+      <%
+     Iterator<event> iter5=list.iterator(); 
+     while(iter5.hasNext()){
+    		event et=(event)iter5.next();
+    		et_date = et.getdate();
+    		et_time = et.gettime();
+    		if(Integer.parseInt(et_date) == 5)
+    		{
+    		
+    		   if(et.gets_name() == null)
+    		   {
+    		   %>
+    		   <td><input type="checkbox" name="list" value= "<%=et.getid()%>"><%=et_time%></td>					    
+    		   <%
+    		   }
+    		   
+    		}
+    	}
+    %>
+  </tr>
+  <tr>
+     <td align="center" style="width: 40px; ">周六</td>
+      <%
+     Iterator<event> iter6=list.iterator(); 
+     while(iter6.hasNext()){
+    		event et=(event)iter6.next();
+    		et_date = et.getdate();
+    		et_time = et.gettime();
+    		if(Integer.parseInt(et_date) == 6)
+    		{
+    		
+    		   if(et.gets_name() == null)
+    		   {
+    		   %>
+    		   <td><input type="checkbox" name="list" value= "<%=et.getid()%>"><%=et_time%></td>					    
+    		   <%
+    		   }
+    		   
+    		}
+    	}
+    %>
+  </tr>
+  <tr>
+     <td align="center" style="width: 40px; ">周天</td>
+      <%
+     Iterator<event> iter7=list.iterator(); 
+     while(iter7.hasNext()){
+    		event et=(event)iter7.next();
+    		et_date = et.getdate();
+    		et_time = et.gettime();
+    		if(Integer.parseInt(et_date) == 7)
+    		{
+    		
+    		   if(et.gets_name() == null)
+    		   {
+    		   %>
+    		   <td><input type="checkbox" name="list" value= "<%=et.getid()%>"><%=et_time%></td>					    
+    		   <%
+    		   }
+    		   
+    		}
+    	}
+    %>
+  </tr>
+            
+    </table>
+    
+    <%
+    request.setAttribute("nowtch",tch);
+    request.setAttribute("nowtch_name",t_name);
+    request.setAttribute("nowstu",stu);
+    request.setAttribute("nowstu_name",s_name);
+    %>
+    <table>
+        <tr>
+        <td>
+        备注：
+        </td>
+        <td>
+        
+        <input type="text" name="beizhu" style="width: 230px; ">
+        
+        </td>
+        </tr>
+        </table>
+        <table>
+            <tr>
+            <td>
+              	<input type="submit"  name="deal5"  value="确定预约" style="width: 100px; ">
+      	    </td>
+      	    <td>
+      	        <input type="submit"  name="deal4"  value="返回" style="width: 100px; ">
+           	</td>
+            </tr>
+            </table>
+    </form>
+
+ 	<p><a href="index.jsp">重新登录</a>
+ 	</p>
   </body>
 </html>

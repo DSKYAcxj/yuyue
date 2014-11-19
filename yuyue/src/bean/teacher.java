@@ -2,55 +2,43 @@ package bean;
 public class teacher {
 		private String name;
 		private String psword;
-		private String fabu;
-		private String beiyuyue ;
+		private String truename;
 				
 		
 		
 		public teacher(){
 			this.name = null;
-			this.fabu = null;
-			this.beiyuyue = null;
+			this.truename = null;
 			this.psword = null;
 		}
 		
 		public teacher(String name,String psword){
 			this.name=name;
 			this.psword=psword;
-			this.fabu = null;
-			this.beiyuyue = null;
+			this.truename = null;
 		}
-		public void setName(String name) {
+		public void setname(String name) {
 			this.name = name;
 		}
 
-		public String getName() {
+		public String getname() {
 			return name;
 		}
 
-		public void setPsword(String psword) {
+		public void setpsword(String psword) {
 			this.psword = psword;
 		}
 
-		public String getPsword() {
+		public String getpsword() {
 			return psword;
 		}
 
-		public void setFabu(String fabu) {
-			this.fabu = fabu;
+		public void settruename(String fabu) {
+			this.truename = fabu;
 		}
 
-		public String getFabu() {
-			return fabu;
+		public String gettruename() {
+			return truename;
 		}
-
-		public void setBeiyuyue(String beiyuyue) {
-			this.beiyuyue = beiyuyue;
-		}
-
-		public String  getBeiyuyue() {
-			return beiyuyue;
-		}
-
 
 }
