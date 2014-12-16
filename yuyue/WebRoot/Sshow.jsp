@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body>
+  <body style="background:url('image/1.jpg') no-repeat;">
 
     预约时间详细信息页面<br>
     <%
@@ -60,6 +60,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <%
         }
    %>  
+   <p><font face="Arial" color="#008080">
+   </font>
    <form  name="form" method="post" action="s_deal">
    <table>
    <tr>

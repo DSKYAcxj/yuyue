@@ -10,6 +10,10 @@ import java.sql.SQLException;
 public class DBConnection {
 	static private String user = "root";
 	static private String password = "";
+	//static private String user = "uL6J9zgfx4hFJ";
+	//static private String password = "pnRZPrBWEKwl6";
+	//static private String user = "xl3z0434lo";
+	//static private String password = "41i53iizm32yzx5242xj1j5x2km1ki53z0wi051m";
 	private Connection con=null;
 	private PreparedStatement ps = null; 
 	private ResultSet rs = null;
@@ -17,7 +21,10 @@ public class DBConnection {
 	public static Connection getConnection(){
 		System.out.println("right!!!");
 		String DBDRIVER="com.mysql.jdbc.Driver";
-		String DBURL="jdbc:mysql://localhost:3306/yuyue";
+		
+		//String DBURL="jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_0501yuyue2";
+	    String DBURL="jdbc:mysql://localhost:3306/yuyue";
+		//String DBURL="jdbc:mysql://10.4.26.93:3306/d142621c367c7416e9f468169c2e581a8";
 	    Connection con = null;
 	    try{
 	    	System.out.println("right!!!");

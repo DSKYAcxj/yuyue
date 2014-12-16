@@ -1,3 +1,5 @@
+
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,40 +10,59 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.util.mail.*;
-
-import db.database;
 import bean.event;
 import bean.teacher;
 
-public class s_deal extends HttpServlet {
+import com.util.mail.MailSenderInfo;
+import com.util.mail.SimpleMailSender;
+
+import db.database;
+
+/**
+ * Servlet implementation class s_deal2
+ */
+public class s_deal2 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public s_deal2() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * 
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	private static final long serialVersionUID = 1L;
-
-	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
-	}
-	
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		doPost(request,response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String s_name =(String)request.getSession().getAttribute("nowstu_name");
 		String k_name =(String)request.getSession().getAttribute("nowtch_name");
-		String tmps = (String)request.getSession().getAttribute("nowyue");
-		int yue = Integer.parseInt(tmps);
-		tmps = (String)request.getSession().getAttribute("nowri");
-		int ri = Integer.parseInt(tmps);
-		tmps = (String)request.getSession().getAttribute("nowzhou");
-		int zhou = Integer.parseInt(tmps);
+		String tmps = null;
+		
+		int yue,ri,zhou;
+		try
+		{
+			tmps = (String)request.getSession().getAttribute("nowyue"); 
+			yue= Integer.parseInt(tmps);
+			tmps = (String)request.getSession().getAttribute("nowri");
+			ri = Integer.parseInt(tmps);
+			tmps = (String)request.getSession().getAttribute("nowzhou");
+			zhou = Integer.parseInt(tmps);
+		}catch(Exception e)
+		{
+			yue = 12;
+			ri = 15;
+			zhou = 1;
+		}
+		
 		String detail[] =request.getParameterValues("list");
 		String url1 = "STxt.jsp";
 		//String url2 = "Sshow.jsp";
@@ -609,8 +630,5 @@ public class s_deal extends HttpServlet {
 	    	return;
 		}
 	}
-	
-	public void init() throws ServletException {
-		// Put your code here
-	}
+
 }

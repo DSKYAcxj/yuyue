@@ -52,14 +52,15 @@ public class database {
 	    boolean flag=false;
 	    try{
 	    	con=DBConnection.getConnection();
-			stmt=con.prepareStatement("insert into event "+"values(?,?,?,?,?,?,?)");
+			stmt=con.prepareStatement("insert into event "+"values(?,?,?,?,?,?,?,?)");
 			stmt.setString(1,et.getid());
 			stmt.setString(2,et.gett_name());
 			stmt.setString(3,et.gets_name());
-			stmt.setString(4,et.getdate());
-			stmt.setString(5,et.gettime());
-			stmt.setString(6,et.getdidian());
-			stmt.setString(7,et.getbeizhu());
+			stmt.setInt(4,et.getyue());
+			stmt.setInt(5,et.getri());
+			stmt.setString(6,et.gettime());
+			stmt.setString(7,et.getdidian());
+			stmt.setString(8,et.getbeizhu());
             if(stmt.executeUpdate()==1)flag=true;
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
@@ -82,7 +83,7 @@ public class database {
 		return flag;
 	}
 	
-     public static ArrayList<event> showt_name(String t_name){
+     public static ArrayList<event> showt_name(String t_name,int yue,int ri){
 	 	
 		ArrayList<event> etinfo = new ArrayList<event>();
 		try{
@@ -100,11 +101,12 @@ public class database {
 				et.sett_name(rs.getString("t_name"));
 				System.out.println(et.gett_name());
 				et.sets_name(rs.getString("s_name"));
-				et.setdate(rs.getString("date"));
+				et.setyue(rs.getInt("yue"));
+				et.setri(rs.getInt("ri"));
 				et.settime(rs.getString("time"));
 				et.setdidian(rs.getString("didian"));
 				et.setbeizhu(rs.getString("beizhu"));
-				etinfo.add(et);
+				if(et.getyue() == yue && et.getri() == ri)etinfo.add(et);
 			}
 			System.out.println("3!!!");
 		}catch(SQLException e){
@@ -121,7 +123,7 @@ public class database {
 
      
 
-     public static ArrayList<event> shows_name(String s_name){
+     public static ArrayList<event> shows_name(String s_name,int yue,int ri){
  	 	
  		ArrayList<event> etinfo = new ArrayList<event>();
  		try{
@@ -133,11 +135,12 @@ public class database {
  				et.setid(rs.getString("id"));
  				et.sett_name(rs.getString("t_name"));
  				et.sets_name(rs.getString("s_name"));
- 				et.setdate(rs.getString("date"));
+ 				et.setyue(rs.getInt("yue"));
+ 				et.setri(rs.getInt("ri"));
  				et.settime(rs.getString("time"));
  				et.setdidian(rs.getString("didian"));
  				et.setbeizhu(rs.getString("beizhu"));
- 				etinfo.add(et);
+ 				if(et.getyue() == yue && et.getri() == ri)etinfo.add(et);
  			}
  		}catch(SQLException e){
  			etinfo=null;
@@ -194,6 +197,7 @@ public static boolean addInfo_S(student tch){
 		return flag;
 	}
 	*/
+     
      public static event queryid(String name){
  		event tchname = new event();
  	    ResultSet rs=null;
@@ -205,7 +209,8 @@ public static boolean addInfo_S(student tch){
  				tchname.setid(rs.getString("id"));
  				tchname.sett_name(rs.getString("t_name"));
  				tchname.sets_name(rs.getString("s_name"));
- 				tchname.setdate(rs.getString("date"));
+ 				tchname.setyue(rs.getInt("yue"));
+ 				tchname.setri(rs.getInt("ri"));
  				tchname.settime(rs.getString("time"));
  				tchname.setdidian(rs.getString("didian"));
  				tchname.setbeizhu(rs.getString("beizhu"));
@@ -221,29 +226,62 @@ public static boolean addInfo_S(student tch){
  		return tchname;
  	}
      
-     public static teacher querytruename(String name){
- 		teacher tchname = new teacher();
+     
+     public static ArrayList<teacher> queryall(){
+    	 System.out.println("寻师成功0!!!");
+ 		ArrayList<teacher> etinfo = new ArrayList<teacher>();
  	    ResultSet rs=null;
+ 	   System.out.println("寻师成功1!!!");
  	    try{
+ 	    	System.out.println("寻师成功2!!!");
  			con=DBConnection.getConnection();
- 			stmt=con.prepareStatement("select * from teacher where truename= '"+name+"'");
+ 			stmt=con.prepareStatement("select * from teacher");
+ 			System.out.println("寻师成功3!!!");
  			rs=stmt.executeQuery();
  			while(rs.next()){
+ 				teacher tchname = new teacher();
  				tchname.setname(rs.getString("name"));
- 				tchname.setpsword(rs.getString("psword"));
- 				tchname.settruename(rs.getString("truename"));
- 				tchname.setmail(rs.getString("mail"));
+  				tchname.setpsword(rs.getString("psword"));
+  				tchname.settruename(rs.getString("truename"));
+  				tchname.setmail(rs.getString("mail"));
+ 				System.out.println("寻师成功4!!!");
+ 				etinfo.add(tchname);		
  			}
- 		}catch(SQLException e){
- 			tchname=null;
- 		}if(rs!=null){
- 			try{
-     			rs.close();
-     			}catch(SQLException e){}
- 		}
- 		DBConnection.Close(con, stmt);
- 		return tchname;
+ 	   }catch(SQLException e){
+			etinfo=null;
+		}if(rs!=null){
+			try{
+    			rs.close();
+    			}catch(SQLException e){}
+		}
+		DBConnection.Close(con, stmt);
+		return etinfo;
  	} 
+    
+    public static teacher querytruename(String name){
+  		teacher tchname = new teacher();
+  	    ResultSet rs=null;
+  	    try{
+  			con=DBConnection.getConnection();
+  			stmt=con.prepareStatement("select * from teacher where truename= '"+name+"'");
+  			rs=stmt.executeQuery();
+  			while(rs.next()){
+  				tchname.setname(rs.getString("name"));
+  				tchname.setpsword(rs.getString("psword"));
+  				tchname.settruename(rs.getString("truename"));
+  				tchname.setmail(rs.getString("mail"));
+  			}
+  		}catch(SQLException e){
+  			tchname=null;
+  		}if(rs!=null){
+  			try{
+      			rs.close();
+      			}catch(SQLException e){}
+  		}
+  		DBConnection.Close(con, stmt);
+  		return tchname;
+  	} 
+    
      
 	public static teacher queryt_name(String name){
 		teacher tchname = new teacher();

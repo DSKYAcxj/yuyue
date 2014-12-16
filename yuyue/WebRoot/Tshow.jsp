@@ -21,11 +21,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
+
+
+
+
+
+
+
+
+
+
+
   </head>
   
   <body>
 
     预约时间详细信息页面<br>
+    
+    
+    
+    
+    <div id="header">
+    #header {
+  padding: 20px;
+  background: #ccc;
+  }
+  ...页头部分...
+</div>
+<div id="sidebar">
+  ...侧边栏部分...
+</div>
+<div id="content">
+  ...主体部分...
+</div>
+<div id="footer">
+  ...页脚部分...
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <%
         String detail[] = (String [])request.getAttribute("nowtch_detail");
         String t_name = (String)request.getAttribute("nowtch_name");

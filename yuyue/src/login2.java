@@ -3,40 +3,49 @@ import java.util.ArrayList;
 import java.util.Calendar;
 //import java.util.List;
 
+
 import javax.servlet.RequestDispatcher;
+/*
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+*/
+import db.database;
+import bean.event;
+import bean.student;
+import bean.teacher;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import db.database;
-
-import bean.event;
-import bean.student;
-import bean.teacher;
-
-
-public class login extends HttpServlet {
+/**
+ * Servlet implementation class login2
+ */
+public class login2 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public login2() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * 
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 	}
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		doPost(request,response);
-	}
-	
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url1 = "TTxt.jsp";
 		String url2 = "STxt.jsp";
 		String url = "index.jsp";
@@ -68,6 +77,7 @@ public class login extends HttpServlet {
 		System.out.println("zhou:"+zhou);
 		if(iButton1 != null)
 		{
+			
 		    teacher tch=database.queryt_name(name);
 		    String psd = tch.getpsword();
 		    System.out.println("1!!!");
@@ -92,6 +102,8 @@ public class login extends HttpServlet {
 			    rd.forward(request, response);
 		    }
 		    
+			//RequestDispatcher rd=request.getRequestDispatcher(url);
+		    //rd.forward(request, response);
 		}
 		
 		else if(iButton2 != null)
@@ -122,13 +134,4 @@ public class login extends HttpServlet {
 		return;
 	}
 
-
-	/**
-	 * Initialization of the servlet. <br>
-	 *
-	 * @throws ServletException if an error occurs
-	 */
-	public void init() throws ServletException {
-		// Put your code here
-	}
 }

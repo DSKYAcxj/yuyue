@@ -4,7 +4,8 @@ public class event {
 	private String id;
 	private String t_name;
 	private String s_name;
-	private String date;
+	private int yue;
+	private int ri;
 	private String time;
 	private String didian;
 	private String beizhu;
@@ -13,7 +14,8 @@ public class event {
 		this.id = null;
 		this.t_name = null;
 		this.s_name = null;
-		this.date = null;
+		this.yue = 0;
+		this.ri = 0;
 		this.time = null;
 		this.didian = null;
 		this.beizhu = null;
@@ -43,12 +45,20 @@ public class event {
 		return s_name;
 	}
 	
-	public void setdate(String s) {
-		this.date = s;
+	public void setyue(int s) {
+		this.yue = s;
 	}
 	
-	public String getdate() {
-		return date;
+	public int getyue() {
+		return yue;
+	}
+	
+	public void setri(int s) {
+		this.ri = s;
+	}
+	
+	public int getri() {
+		return ri;
 	}
 	
 	public void settime(String s) {
